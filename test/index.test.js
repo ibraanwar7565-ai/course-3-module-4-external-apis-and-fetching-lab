@@ -19,8 +19,8 @@ describe("Weather Alerts App", () => {
 
   test("fetches data from the correct API endpoint", async () => {
     const mockAlerts = [
-      { headline: "Winter Storm Warning" },
-      { headline: "Wind Advisory" }
+      { properties: { headline: "Winter Storm Warning" } },
+      { properties: { headline: "Wind Advisory" } }
     ];
 
     global.fetch.mockResolvedValueOnce({
@@ -41,8 +41,8 @@ describe("Weather Alerts App", () => {
 
   test("displays fetched alerts in the DOM", async () => {
     const mockAlerts = [
-      { headline: "Winter Storm Warning" },
-      { headline: "Wind Advisory" }
+      { properties: { headline: "Winter Storm Warning" } },
+      { properties: { headline: "Wind Advisory" } }
     ];
 
     global.fetch.mockResolvedValueOnce({

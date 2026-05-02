@@ -35,9 +35,17 @@ function displayWeather(data) {
     return;
   }
 
-  alertsDisplay.innerHTML = data.features
-    .map((feature) => `<p>${feature.headline}</p>`)
+  const count = data.features.length;
+  const headlines = data.features
+    .map((feature) => {
+      const headline = (feature.properties && feature.properties.headline)
+        || feature.headline
+        || "Unknown Alert";
+      return `<p>${headline}</p>`;
+    })
     .join("");
+
+  alertsDisplay.innerHTML = `<p>Weather Alerts: ${count}</p>${headlines}`;
 }
 
 function displayError(message) {

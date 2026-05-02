@@ -1,159 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Alerts – National Safety Awareness</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
-      color: #2d3748;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      color: #1a365d;
-    }
-
-    header p {
-      color: #4a5568;
-      margin-top: 0.5rem;
-    }
-
-    .search-container {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    #state-input {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      border: 2px solid #cbd5e0;
-      border-radius: 6px;
-      width: 200px;
-      text-transform: uppercase;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    #state-input:focus { border-color: #3182ce; }
-
-    #fetch-btn {
-      padding: 0.6rem 1.4rem;
-      font-size: 1rem;
-      background: #3182ce;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #fetch-btn:hover { background: #2b6cb0; }
-    #fetch-btn:disabled { background: #a0aec0; cursor: not-allowed; }
-
-    #error-display {
-      max-width: 700px;
-      margin: 0 auto 1rem;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      background: #fff5f5;
-      border: 1px solid #fc8181;
-      color: #c53030;
-      display: none;
-    }
-
-    #error-display:not(:empty) { display: block; }
-
-    #weather-display {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .alert-card {
-      background: #fff;
-      border-left: 5px solid #3182ce;
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .alert-card.severity-extreme { border-left-color: #c53030; }
-    .alert-card.severity-severe  { border-left-color: #dd6b20; }
-    .alert-card.severity-moderate{ border-left-color: #d69e2e; }
-    .alert-card.severity-minor   { border-left-color: #38a169; }
-
-    .alert-card h3 { font-size: 1.05rem; color: #1a365d; margin-bottom: 0.5rem; }
-    .alert-card p  { font-size: 0.9rem; color: #4a5568; margin-top: 0.25rem; }
-    .alert-card .badge {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-left: 0.5rem;
-      background: #ebf8ff;
-      color: #2b6cb0;
-      vertical-align: middle;
-    }
-
-    .no-alerts {
-      text-align: center;
-      color: #718096;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 6px;
-      border: 1px dashed #cbd5e0;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Alerts App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>U.S. Weather Alerts</h1>
-    <p>Enter a two-letter state abbreviation to view active NWS alerts.</p>
-  </header>
-
-  <div class="search-container">
-    <input
-      id="state-input"
-      type="text"
-      maxlength="2"
-      placeholder="e.g. CA"
-      aria-label="State abbreviation"
-    />
-    <button id="fetch-btn">Get Alerts</button>
-  </div>
-
-  <div id="error-display" role="alert"></div>
-  <div id="weather-display"></div>
-
-  <script src="src/app.js"></script>
-  <script>
-    document.getElementById('fetch-btn').addEventListener('click', () => {
-      const state = document.getElementById('state-input').value.trim();
-      fetchWeatherData(state);
-    });
-
-    document.getElementById('state-input').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const state = document.getElementById('state-input').value.trim();
-        fetchWeatherData(state);
-      }
-    });
-  </script>
+  <h1>Weather Alerts App</h1>
+  <input type="text" id="city-input" placeholder="Enter state abbreviation">
+  <button id="fetch-weather">Get Weather Alerts</button>
+  <div id="alerts-display"></div>
+  <div id="error-message" class="hidden"></div>
+  <script src="index.js"></script>
 </body>
 </html>
